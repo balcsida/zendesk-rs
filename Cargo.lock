@@ -2631,7 +2631,7 @@ dependencies = [
 
 [[package]]
 name = "zendesk"
-version = "0.6.0"
+version = "0.7.0"
 dependencies = [
  "anyhow",
  "axum",
@@ -2656,7 +2656,7 @@ dependencies = [
 
 [[package]]
 name = "zendesk-cli"
-version = "0.6.0"
+version = "0.7.0"
 dependencies = [
  "anyhow",
  "axum",
@@ -2681,7 +2681,7 @@ dependencies = [
 
 [[package]]
 name = "zendesk-mcp-server"
-version = "0.6.0"
+version = "0.7.0"
 dependencies = [
  "anyhow",
  "axum",
