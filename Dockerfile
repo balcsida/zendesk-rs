@@ -1,12 +1,12 @@
 # syntax=docker/dockerfile:1
 # Base images are pinned by digest; Dependabot bumps the digests.
-FROM lukemathwalker/cargo-chef:latest-rust-1-slim-bookworm@sha256:2cde8098deabf8414105f7420444a35e44a615ba04e07d3a1fec195ad88d3a1c AS planner
+FROM lukemathwalker/cargo-chef:latest-rust-1-slim-bookworm@sha256:c784743d0bc1411f21b2f942974f8845c0d94955ed4e6c702a561eb4dfc6fdf4 AS planner
 WORKDIR /src
 COPY Cargo.toml Cargo.lock ./
 COPY crates ./crates
 RUN cargo chef prepare --recipe-path recipe.json
 
-FROM lukemathwalker/cargo-chef:latest-rust-1-slim-bookworm@sha256:2cde8098deabf8414105f7420444a35e44a615ba04e07d3a1fec195ad88d3a1c AS builder
+FROM lukemathwalker/cargo-chef:latest-rust-1-slim-bookworm@sha256:c784743d0bc1411f21b2f942974f8845c0d94955ed4e6c702a561eb4dfc6fdf4 AS builder
 WORKDIR /src
 
 # Dependencies compile in their own layer, cached until Cargo.toml/Cargo.lock change.
