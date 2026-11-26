@@ -233,3 +233,18 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
           GH_REPO: ${{ github.repository }}
+
+  # The tap no longer polls for releases, so tell it about this one.
+  homebrew:
+    needs: publish
+    runs-on: ubuntu-24.04
+    permissions: {}
+    steps:
+      - name: Ask the Homebrew tap to update its formulae
+        env:
+          GH_TOKEN: ${{ secrets.TAP_DISPATCH_TOKEN }}
+          VERSION: ${{ github.ref_name }}
+        run: |
+          set -euo pipefail
+          gh api repos/balcsida/homebrew-tap/dispatches \
+            -f event_type=update-zendesk-rs -f "client_payload[version]=${VERSION#v}"
